@@ -5,19 +5,20 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Quiz_attended")
-public class Quiz_attended {
+@Table(name = "QuizAttended")
+public class QuizAttended {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "s_id", referencedColumnName = "id")
-    private Students students;
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private Student student;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id", referencedColumnName = "id")
-    private Quizzes quizzes;
+    private Quiz quiz;
 
 }

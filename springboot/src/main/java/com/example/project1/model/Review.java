@@ -3,19 +3,18 @@ package com.example.project1.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.awt.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
 @Data
-@Table(name = "Reviews")
-public class Reviews {
+@Table(name = "Review")
+public class Review {
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private Course_enrollment courseEnrollment;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "rating")
     private BigDecimal rating;
@@ -25,5 +24,9 @@ public class Reviews {
 
     @Column(name = "date")
     private Date date;
+
+    @OneToOne
+    @JoinColumn(name = "courseEnrollment_id", referencedColumnName = "id")
+    private CourseEnrollment courseEnrollment;
 
 }

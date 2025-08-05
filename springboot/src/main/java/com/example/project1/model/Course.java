@@ -1,13 +1,16 @@
 package com.example.project1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Courses")
-public class Courses {
+@Table(name = "Course")
+public class Course {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -17,7 +20,7 @@ public class Courses {
     @Column(name = "duration")
     private String duration;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "instructor_id", referencedColumnName = "id")
     private Instructor instructor;
 

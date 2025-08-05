@@ -6,10 +6,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Quizzes")
-public class Quizzes {
+@Table(name = "Quiz")
+public class Quiz {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -18,6 +19,6 @@ public class Quizzes {
 
     @ManyToOne
     @JoinColumn(name = "module_id", referencedColumnName = "id")
-    private Modules modules;
+    private Module module;
 
 }

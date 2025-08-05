@@ -5,10 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Questions")
-public class Questions {
+@Table(name = "Question")
+public class Question {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -20,5 +21,5 @@ public class Questions {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id", referencedColumnName = "id")
-    private Quizzes quizzes;
+    private Quiz quiz;
 }
